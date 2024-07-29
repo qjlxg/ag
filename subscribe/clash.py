@@ -58,7 +58,7 @@ def filter_proxies(proxies: list) -> dict:
                 "name": "automatic",
                 "type": "url-test",
                 "proxies": [],
-                "url": "https://www.google.com/favicon.ico",
+                "url": "https://www.tiktok.com/",
                 "interval": 300,
             },
             {"name": "🌐 Proxy", "type": "select", "proxies": ["automatic"]},
