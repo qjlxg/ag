@@ -446,7 +446,7 @@ if __name__ == "__main__":
         "--delay",
         type=int,
         required=False,
-        default=5000,
+        default=500,
         help="proxies max delay allowed",
     )
 
@@ -572,7 +572,7 @@ if __name__ == "__main__":
         "--url",
         type=str,
         required=False,
-        default="https://www.google.com/generate_204",
+        default="https://www.tiktok.com/",
         help="test url",
     )
 
