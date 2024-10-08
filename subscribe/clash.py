@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 
 # @Author  : wzdnzd
@@ -53,7 +54,18 @@ def generate_config(path: str, proxies: list, filename: str) -> list:
 def filter_proxies(proxies: list) -> dict:
     config = {
         "proxies": [],
-       }
+        "proxy-groups": [
+            {
+                "name": "automatic",
+                "type": "url-test",
+                "proxies": [],
+                "url": "https://www.tiktok.com/",
+                "interval": 300,
+            },
+            {"name": "🌐 Proxy", "type": "select", "proxies": ["automatic"]},
+        ],
+        "rules": ["MATCH,🌐 Proxy"],
+    }
 
     # 按名字排序方便在节点相同时优先保留名字靠前的
     proxies.sort(key=lambda p: str(p.get("name", "")))
@@ -615,7 +627,7 @@ def check(proxy: dict, api_url: str, timeout: int, test_url: str, delay: int, st
     base_url = f"http://{api_url}/proxies/{proxy_name}/delay?timeout={str(timeout)}&url="
 
     # 失败重试间隔：30ms ~ 200ms
-    interval = random.randint(60, 500) / 1000
+    interval = random.randint(30, 200) / 1000
     targets = [
         test_url,
         "https://www.youtube.com/s/player/23010b46/player_ias.vflset/en_US/remote.js",
